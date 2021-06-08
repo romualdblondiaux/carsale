@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Car Sale - {% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        
+    </head>
+    <body>
+        {% include 'partials/header.html.twig' %}
+   
+        {% block body %}{% endblock %}
+
+        {% include 'partials/footer.html.twig' %}
+        
+      </body>
+    
+</html>

@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#logo{
+    height: 50px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+
+
