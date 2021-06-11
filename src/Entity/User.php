@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -67,15 +69,40 @@ class User implements UserInterface
     private $picture;
 
     /**
-     * @ORM\Column(type="json")
-     * @Assert\Seller(message="Veuillez choisir une option")
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez choisir votre type de vente")
      */
-    private $seller = [];
+    private $seller;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $number;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $cp;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $phone;
 
     /**
      * Permet d'initialiser le slug automatiquement s'il n'est pas fourni 
@@ -207,12 +234,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getSeller(): ?array
+    public function getSeller(): ?string
     {
         return $this->seller;
     }
 
-    public function setSeller(array $seller): self
+    public function setSeller(?string $seller): self
     {
         $this->seller = $seller;
 
@@ -227,6 +254,66 @@ class User implements UserInterface
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getNumber(): ?string
+    {
+        return $this->number;
+    }
+
+    public function setNumber(string $number): self
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    public function getCp(): ?string
+    {
+        return $this->cp;
+    }
+
+    public function setCp(string $cp): self
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }
