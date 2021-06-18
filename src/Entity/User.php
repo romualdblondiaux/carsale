@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
@@ -28,13 +30,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Vous devez renseinger votre prénom")
+     * @Assert\NotBlank(message="Vous devez renseigner votre prénom")
      */
     private $FirstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Vous devez renseinger votre nom")
+     * @Assert\NotBlank(message="Vous devez renseigner votre nom")
      */
     private $LastName;
 
@@ -81,28 +83,43 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner votre adresse")
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner le numero")
      */
     private $number;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner le code postal")
      */
     private $cp;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner la ville")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner votre numero de tel")
      */
     private $phone;
+
+    /**
+     * @ORM\OneToMany(targetEntity=SaleCars::class, mappedBy="id_user", orphanRemoval=true)
+     */
+    private $id_cars;
+
+    public function __construct()
+    {
+        $this->id_cars = new ArrayCollection();
+    }
 
     /**
      * Permet d'initialiser le slug automatiquement s'il n'est pas fourni 
@@ -314,6 +331,36 @@ class User implements UserInterface
     public function setPhone(string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SaleCars[]
+     */
+    public function getIdCars(): Collection
+    {
+        return $this->id_cars;
+    }
+
+    public function addIdCar(SaleCars $idCar): self
+    {
+        if (!$this->id_cars->contains($idCar)) {
+            $this->id_cars[] = $idCar;
+            $idCar->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdCar(SaleCars $idCar): self
+    {
+        if ($this->id_cars->removeElement($idCar)) {
+            // set the owning side to null (unless already changed)
+            if ($idCar->getIdUser() === $this) {
+                $idCar->setIdUser(null);
+            }
+        }
 
         return $this;
     }

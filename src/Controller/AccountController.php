@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\AccountType;
+use App\Form\ImgModifyType;
 use App\Entity\UserImgModify;
 use App\Entity\PasswordUpdate;
 use App\Form\RegistrationType;
+use App\Form\PasswordUpdateType;
 use Symfony\Component\Form\FormError;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +24,8 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class AccountController extends AbstractController
 {
     /**
-     * @Route("/Login", name="account_login")
+     * Permet de se connecter
+     * @Route("/login", name="account_login")
      */
     public function index(AuthenticationUtils $utils): Response
     {
@@ -100,7 +104,7 @@ class AccountController extends AbstractController
 
     /**
      * Permet d'afficher le formulaire d'édition d'un user et modifier ses informations
-     * @Route("/account/profileModify", name="account_profilemodif")
+     * @Route("/account/profileModify", name="account_profileModif")
      * @IsGranted("ROLE_USER")
      * @param Request $request
      * @param EntityManagerInterface $manager
@@ -263,4 +267,16 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('account_index');
 
     }
+
+    /**
+     * Permet d'afficher la liste des réservation faites par l'utilisateur
+     * @Route("/account/bookings", name="account_booking")
+     * @IsGranted("ROLE_USER")
+     * @return Response
+     */
+    public function bookings()
+    {
+        return $this->render('account/bookings.html.twig');
+    }
+
 }
