@@ -25,7 +25,7 @@ security:
                 check_path: account_login
             logout:
                 path: account_logout
-                target: account_login
+                target: Accueil
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

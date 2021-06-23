@@ -5,31 +5,29 @@
 {% block body %}
     <div class="container">
         <div class="row align-items-center mb-3">
-            <div class="col-3 text-center">
+            <div class="col-md-6 me-auto">
                 {% if user.picture %}
-                        <img src="/uploads/{{user.picture}}" class="avatar mb-3" alt="avatar de {{user.fullName}}">
+                        <img src="/public/uploads/{{ user.picture }}" class="avatar1 mb-3" alt="avatar de {{user.fullName}}">
                     {% else %}
-                        <img src="http://placehold.it/300x300" class="avatar mb-3" alt="avatar de {{user.fullName}}">
+                        <img src="https://picsum.photos/500/250" class="avatar mb-3" alt="avatar de {{user.fullName}}">
                 {% endif %}
-                <br>
-                <span class="badge badge-primary">{{user.ads | length}} anonnce(s)</span>
+              
             </div>
-            <div class="col-9">
+            <div class="col-md-6">
                 <h1>{{user.fullName}}</h1>
                 {% if user is same as (app.user) %}
                     <div class="mt-3">
-                        <a href="{{ path("account_profile")}}" class="btn btn-primary mr-2 mb-2">Modifier mes informations</a>
-                        <a href="{{ path("account_password")}}" class="btn btn-primary mb-2">Modifier mon mot de passe</a>
-                        <a href="{{ path("account_modifimg")}}" class="btn btn-primary mb-2">Modifier mon avatar</a>
-                        <a href="{{ path("account_delimg")}}" class="btn btn-primary mb-2">Supprimer mon avatar</a>
+                        <a href="{{ path("account_profileModify")}}" class="btn btn-primary mr-2 mb-2">Modifier mes informations</a><br>
+                        <a href="{{ path("account_password")}}" class="btn btn-primary mb-2">Modifier mon mot de passe</a><br>
+                        <a href="{{ path("account_imgModify")}}" class="btn btn-primary mb-2">Modifier mon avatar</a><br>
+                        <a href="{{ path("account_delimg")}}" class="btn btn-primary mb-2">Supprimer mon avatar</a> <br>
                     </div>
                 {% endif %}
             </div>
         </div>
-        {{user.description | raw | nl2br }}
         <hr>
         <h2>Les annonces de {{user.fullName}}</h2>
-        {% if user.ads | length > 0 %}
+        {# {% if user.ads | length > 0 %}
             <div class="row">
                {% for ad in user.ads %}
                    {% include 'ad/_ad.html.twig' %} 
@@ -40,6 +38,6 @@
                     <p><strong>{{user.fullName}}</strong> n'a pas encore d'annonce sur le site</p>
                 </div>
 
-        {% endif %}
+        {% endif %} #}
     </div>
 {% endblock %}

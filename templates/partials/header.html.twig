@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-warning ps-3 pe-3">
-    <a class="navbar-brand" href="{{ path('Accueil') }}"><img id="logo" src="../Images/Logo site de vente voiture banner.png" alt=""></a>
+    <a class="navbar-brand" href="{{ path('Accueil') }}"><img id="logo" src="../uploads/Logo site de vente voiture banner.png" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,10 +10,10 @@
                 <a class="nav-link active" href="{{ path('Accueil') }}">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('neuve') }}">Véhicules Neufs</a>
+                <a class="nav-link" href="{{ path('prosales_index') }}">Véhicules Neufs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('occassion') }}">Véhicules d'Occassions</a>
+                <a class="nav-link" href="{{ path('partsales_index') }}">Véhicules d'Occassions</a>
             </li>
         </ul>
     
@@ -28,7 +28,7 @@
                             <div class="dropdown-divider"></div>
                         <a href="{{ path('account_index') }}" class="dropdown-item">Mon compte</a>
                         <a href="#" class="dropdown-item">Mes annonces</a>
-                        <a href="{{ path('account_profileModif') }}" class="dropdown-item">Modifer mon profil</a>
+                        <a href="{{ path('account_profileModify') }}" class="dropdown-item">Modifer mon profil</a>
                             <div class="dropdown-divider"></div>
                         <a href="{{ path('account_logout') }}" class="dropdown-item">Déconnexion</a>
                     </div>

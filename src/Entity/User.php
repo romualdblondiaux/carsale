@@ -223,10 +223,13 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getRoles(): ?array
+     /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->roles;
-        // garanty le role user pour chaque personne
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);

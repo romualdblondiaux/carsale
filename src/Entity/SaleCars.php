@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\SaleCarsRepository;
+use Cocur\Slugify\Slugify;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SaleCarsRepository;
 
 /**
  * @ORM\Entity(repositoryClass=SaleCarsRepository::class)
@@ -87,6 +90,30 @@ class SaleCars
      * @ORM\Column(type="string", length=255)
      */
     private $opt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="saleCarsId", orphanRemoval=true)
+     */
+    private $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
+
+    /**
+     * Permet d'initialiser le slug automatiquement s'il n'est pas fourni 
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     * 
+     * @return void
+     */
+    public function initializeSlug(){
+        if(empty($this->slug)){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->title);
+        }
+    }
 
     public function getId(): ?int
     {
@@ -257,6 +284,36 @@ class SaleCars
     public function setOpt(string $opt): self
     {
         $this->opt = $opt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setSaleCarsId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getSaleCarsId() === $this) {
+                $image->setSaleCarsId(null);
+            }
+        }
 
         return $this;
     }

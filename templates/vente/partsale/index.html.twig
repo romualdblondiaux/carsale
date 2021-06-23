@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos ventes de voiture d'occassionl{% endblock %}
+
+{% block body %}
+<div class="vente">
+    <div class="container">
+        <h1 class="my-3 text-center">Nos ventes de voiture d'occassion</h1>
+            <div class="row">
+            {% for partsale in partsales %}
+                {% set url = path('sale_info', {'id': partsale.id}) %}
+                <div class="col-md-3">
+                    <div class="card bg-secondary mb-3">
+                        <div class="card-header text-center">
+                            <h4>{{ partsale.marque }} {{ partsale.modele }}</h4>
+                        </div>
+                        <a href="{{url}}">
+                            <img src="{{ partsale.img }}" alt="" class="partsaleimg">
+                        </a>
+                        <div class="card-body text-center">
+                            <h4 class="card-title">
+                                {{ partsale.km | number_format(0, '',' ') }} KM
+                            </h4>
+                            <p class="card-text">
+                                <strong>{{partsale.prix | number_format(0, '',' ')}} €</strong>
+                            </p>
+                            <a href="{{url}}" class="btn btn-info mt-3">En savoir plus</a>
+                        </div>
+                    </div>
+                </div> 
+            {% endfor %}
+            </div>
+    </div>
+</div>
+{% endblock %}

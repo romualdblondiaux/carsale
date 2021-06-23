@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Accueil{% endblock %}
 {% block body %}
-{{ dump(app.user) }}
+
     <div class="container mt-5">
         <div class="card border-warning bg-secondary text-white text-center">
             <div class="card-body">
@@ -9,8 +9,8 @@
                 <p>Ce site propose de mettre en relation des vendeurs et des acheteurs de voiture qu'elles soient neuves ou d'occassions</p>
                 <hr class="bg-warning">
                 <p class="card-text mb-3">Vous recherchez une voiture ?</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Voir nos voitures neuves</a>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Voir nos voitures d'occassions</a>
+                <a class="btn btn-primary btn-lg" href="{{ path('prosales_index') }}" role="button">Voir nos voitures neuves</a>
+                <a class="btn btn-primary btn-lg" href="{{ path('partsales_index') }}" role="button">Voir nos voitures d'occassions</a>
             </div>
         </div>
     </div>

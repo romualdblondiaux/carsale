@@ -9,5 +9,44 @@
     border-radius: 5px;
 }
 
+.container{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.vente, .info, .new{
+    background-color: black;
+    width: 100%;
+    min-height: 100%;
+}
+
+.prosaleimg, .partsaleimg{
+    height: 200px;
+    width: 100%;
+    display: block;
+}
+
+.annonce-title{
+    padding: 2em;
+    background-size: cover;
+    background-position: center center;
+}
+
+.annonce-title h1, .annonce-title h2{
+    font-size: 4em;
+    color: white;
+    text-align: center;
+    text-shadow: 3px 3px 3px rgb(0,0,0,0.5);
+}
+
+.description h4, .option h4{
+    text-decoration: underline;
+}
+
+.carousel-caption, .carousel-control-next, .carousel-control-prev{
+    text-shadow: 3px 3px 1px rgb(0,0,0,0.5);
+}
+
+
 
 

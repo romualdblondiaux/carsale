@@ -5,9 +5,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\AccountType;
 use App\Form\ImgModifyType;
-use App\Entity\UserImgModify;
 use App\Entity\PasswordUpdate;
 use App\Form\RegistrationType;
+use App\Entity\UserImageModify;
 use App\Form\PasswordUpdateType;
 use Symfony\Component\Form\FormError;
 use Doctrine\ORM\EntityManagerInterface;
@@ -27,7 +27,7 @@ class AccountController extends AbstractController
      * Permet de se connecter
      * @Route("/login", name="account_login")
      */
-    public function index(AuthenticationUtils $utils): Response
+    public function login(AuthenticationUtils $utils): Response
     {
         $error = $utils->getLastAuthenticationError();
         $username = $utils->getLastUsername();
@@ -104,7 +104,7 @@ class AccountController extends AbstractController
 
     /**
      * Permet d'afficher le formulaire d'édition d'un user et modifier ses informations
-     * @Route("/account/profileModify", name="account_profileModif")
+     * @Route("/account/profileModify", name="account_profileModify")
      * @IsGranted("ROLE_USER")
      * @param Request $request
      * @param EntityManagerInterface $manager
@@ -137,7 +137,7 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('account_index');
         }
 
-        return $this->render("account/profile.html.twig",[
+        return $this->render("account/profileModify.html.twig",[
             'myForm' => $form->createView()
         ]);
 
@@ -190,15 +190,15 @@ class AccountController extends AbstractController
     }
 
     /**
-     * PErmet de modifier l'avatar de l'utilisateur
-     * @Route("/account/imgmodify", name="account_modifimg")
+     * Permet de modifier l'avatar de l'utilisateur
+     * @Route("/account/imgmodify", name="account_imgModify")
      * @IsGranted("ROLE_USER")
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @return Response
      */
     public function imgModify(Request $request, EntityManagerInterface $manager){
-        $imgModify = new UserImgModify();
+        $imgModify = new UserImageModify();
         $user = $this->getUser();
         $form = $this->createForm(ImgModifyType::class, $imgModify);
         $form->handleRequest($request);
@@ -268,15 +268,5 @@ class AccountController extends AbstractController
 
     }
 
-    /**
-     * Permet d'afficher la liste des réservation faites par l'utilisateur
-     * @Route("/account/bookings", name="account_booking")
-     * @IsGranted("ROLE_USER")
-     * @return Response
-     */
-    public function bookings()
-    {
-        return $this->render('account/bookings.html.twig');
-    }
-
+   
 }

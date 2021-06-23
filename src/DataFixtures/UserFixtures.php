@@ -2,9 +2,10 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\SaleCars;
 use Faker\Factory;
 use App\Entity\User;
+use App\Entity\Image;
+use App\Entity\SaleCars;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -31,7 +32,7 @@ class UserFixtures extends Fixture
             ->setEmail('romuald.blondiaux@gmail.com')
             ->setPassword($this->encoder->encodePassword($admin,'admin'))
             ->setRoles(['ROLE_ADMIN'])
-            ->setPicture('https://picsum.photos/25/25')
+            ->setPicture('/public/Images/Logo site de vente voiture2.png')
             ->setSeller('Proffesional')
             ->setAddress('Rue du Curé')
             ->setNumber('13')
@@ -112,7 +113,14 @@ class UserFixtures extends Fixture
 
         $manager->persist($salecar);
 
-        
+        for($i=1; $i <= rand(2,5); $i++){
+            $image = new Image();
+
+            $image->setUrl('https://picsum.photos/200/200')
+                ->setInfo($faker->sentence())
+                ->setsaleCarsId($salecar);
+            $manager->persist($image);  
+        }
     }
 
        $manager->flush();
