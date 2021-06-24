@@ -29,7 +29,20 @@ class SaleCarsRepository extends ServiceEntityRepository
             ->join('s.id_user','u')
             ->andWhere('u.seller = :val')
             ->setParameter('val', $part)
-            ->orderBy('s.id', 'ASC')
+            ->orderBy('s.marque', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByNewSeller($part)
+    {
+        return $this->createQueryBuilder('s')
+            ->join('s.id_user','u')
+            ->andWhere('u.seller = :val')
+            ->setParameter('val', $part)
+            ->orderBy('s.id', 'DESC')
+            ->setMaxResults(6)
             ->getQuery()
             ->getResult()
         ;

@@ -46,7 +46,7 @@ class UserFixtures extends Fixture
        $user = [];
        $sellers = ['Proffesional','Particular'];
 
-       for($u=1; $u <= 10; $u++){
+       for($u=1; $u <= 20; $u++){
            $user = new User();
            $seller = $faker->randomElement(($sellers));
 
@@ -72,7 +72,7 @@ class UserFixtures extends Fixture
        }
 
        // gestion des voitures
-       for($a = 1; $a <= 12; $a++){
+       for($a = 1; $a <= 50; $a++){
         
         $salecar = new SaleCars();
 

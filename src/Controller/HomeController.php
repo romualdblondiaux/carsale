@@ -3,19 +3,24 @@
 namespace App\Controller;
 
 use App\Entity\SaleCars;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\SaleCarsRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="Accueil")
      */
-    public function index(): Response
+    public function index(SaleCarsRepository $repo): Response
     {
+        $newpartsales = $repo->findByNewSeller('Particular');
+        $newprosales = $repo->findByNewSeller('Proffesional');
+
         return $this->render('home.html.twig', [
-            'controller_name' => 'HomeController',
+            'newpartsales' => $newpartsales,
+            'newprosales' => $newprosales,
         ]);
     }
 
@@ -37,5 +42,7 @@ class HomeController extends AbstractController
         ]);
 
     }
+
+    
 
 }

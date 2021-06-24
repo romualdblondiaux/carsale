@@ -16,145 +16,61 @@
     </div>
     <div class="container">
         <div class="card mt-5 bg-warning">
-            <h1 class="text-center mt-3 mb-3">Nos dernières voitures neuves</h1>
+            <h1 class="text-center mt-3 mb-3">Nos dernières voitures Professionnel</h1>
             <div class="row mx-auto justify-content-center">
-            <div class="col-4">
-                <div class="card text-white bg-secondary mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-body text-end">
-                    <button type="button" class="btn btn-warning">Plus d'info...</button>
-                </div>
-                <div class="card-footer text-white">
-                    2 days ago
-                </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card text-white bg-secondary mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-body text-end">
-                    <button type="button" class="btn btn-warning">Plus d'info...</button>
-                </div>
-                <div class="card-footer text-white">
-                    2 days ago
-                </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card text-white bg-secondary mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-body text-end">
-                    <button type="button" class="btn btn-warning">Plus d'info...</button>
-                </div>
-                <div class="card-footer text-white">
-                    2 days ago
-                </div>
-                </div>
+            
+                {% for newprosale in newprosales %}
+                    {% set url = path('sale_info', {'id': newprosale.id}) %}
+                    <div class="col-md-4">
+                        <div class="card bg-secondary mb-3">
+                            <div class="card-header text-center">
+                                <h4>{{ newprosale.marque }} {{ newprosale.modele }}</h4>
+                            </div>
+                            <a href="{{url}}">
+                                <img src="{{ newprosale.img }}" alt="" class="partsaleimg">
+                            </a>
+                            <div class="card-body text-center">
+                                <h4 class="card-title">
+                                    {{ newprosale.km | number_format(0, '',' ') }} KM
+                                </h4>
+                                <p class="card-text">
+                                    <strong>{{newprosale.prix | number_format(0, '',' ')}} €</strong>
+                                </p>
+                                <a href="{{url}}" class="btn btn-info mt-3">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div> 
+                {% endfor %}
             </div>
         </div>
     </div>
     <div class="container">
         <div class="card mt-5 mb-5 bg-light">
-            <h1 class="text-center mt-3 mb-3">Nos dernières voitures d'occassions</h1>
+            <h1 class="text-center mt-3 mb-3">Nos dernières voitures Particulier</h1>
             <div class="row mx-auto justify-content-center">
-            <div class="col-4">
-                <div class="card text-white bg-secondary mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-body text-end">
-                    <button type="button" class="btn btn-warning">Plus d'info...</button>
-                </div>
-                <div class="card-footer text-white">
-                    2 days ago
-                </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card text-white bg-secondary mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-body text-end">
-                    <button type="button" class="btn btn-warning">Plus d'info...</button>
-                </div>
-                <div class="card-footer text-white">
-                    2 days ago
-                </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card text-white bg-secondary mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <h6 class="card-subtitle text-muted">Support card subtitle</h6>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
-                    <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
-                </svg>
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-                <div class="card-body text-end">
-                    <button type="button" class="btn btn-warning">Plus d'info...</button>
-                </div>
-                    <div class="card-footer text-white">
-                        2 days ago
-                    </div>
-                </div>
+                
+                {% for newpartsale in newpartsales %}
+                    {% set url = path('sale_info', {'id': newpartsale.id}) %}
+                    <div class="col-md-4">
+                        <div class="card bg-secondary mb-3">
+                            <div class="card-header text-center">
+                                <h4>{{ newpartsale.marque }} {{ newpartsale.modele }}</h4>
+                            </div>
+                            <a href="{{url}}">
+                                <img src="{{ newpartsale.img }}" alt="" class="partsaleimg">
+                            </a>
+                            <div class="card-body text-center">
+                                <h4 class="card-title">
+                                    {{ newpartsale.km | number_format(0, '',' ') }} KM
+                                </h4>
+                                <p class="card-text">
+                                    <strong>{{newpartsale.prix | number_format(0, '',' ')}} €</strong>
+                                </p>
+                                <a href="{{url}}" class="btn btn-info mt-3">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div> 
+                {% endfor %}
             </div>
         </div>
     </div>              

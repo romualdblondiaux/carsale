@@ -20,4 +20,6 @@ class PartsaleController extends AbstractController
             'partsales' => $partsales,
         ]);
     }
+
+    
 }
