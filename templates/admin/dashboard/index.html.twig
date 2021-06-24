@@ -1,0 +1,38 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+        <div class="row my-5">
+            <div class="col">
+                <div class="cards bg-primary text-white mb-3 text-center">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <i class="fas fa-users fa-3x"></i>
+                            </div>
+                            <div class="col-8">
+                            <a class="lien" href="{{path('admin_users_index')}}"><h4 class="card-title">{{stats.users}} utilisateurs</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="cards bg-dark text-white mb-3 text-center">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <i class="fas fa-car fa-3x"></i>
+                            </div>
+                            <div class="col-8">
+                                 <a class="lien" href="{{path('admin_sale_cars_index')}}"><h4 class="card-title">{{stats.salecars}} annonces postées</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

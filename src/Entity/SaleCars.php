@@ -317,4 +317,6 @@ class SaleCars
 
         return $this;
     }
+
+    
 }

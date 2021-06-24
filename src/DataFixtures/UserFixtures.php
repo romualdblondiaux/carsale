@@ -32,7 +32,7 @@ class UserFixtures extends Fixture
             ->setEmail('romuald.blondiaux@gmail.com')
             ->setPassword($this->encoder->encodePassword($admin,'admin'))
             ->setRoles(['ROLE_ADMIN'])
-            ->setPicture('/public/Images/Logo site de vente voiture2.png')
+            
             ->setSeller('Proffesional')
             ->setAddress('Rue du Curé')
             ->setNumber('13')
@@ -57,7 +57,7 @@ class UserFixtures extends Fixture
                ->setEmail($faker->email())
                ->setPassword($hash)
                ->setSeller($seller)
-               ->setPicture('https://picsum.photos/25/25')
+               ->setPicture('https://picsum.photos/50/50')
                ->setAddress($faker->streetName())
                ->setNumber(rand(1,999))
                ->setCp(rand(1000,9999))

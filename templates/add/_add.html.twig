@@ -1,0 +1,24 @@
+{% set url = path('adds_show', {'id': add.id}) %}
+        <div class="col-md-4">
+            <div class="card bg-secondary mb-3">
+                <div class="card-header text-center">
+                    <h4>{{ add.marque }} {{ add.modele }}</h4>
+                </div>
+                <a href="{{url}}">
+                    <img src="{{ add.img }}" alt="" class="addimg">
+                </a>
+                <div class="card-body text-center">
+                    <h4 class="card-title">
+                        {{ add.km | number_format(0, '',' ') }} KM
+                    </h4>
+                    <p class="card-text">
+                        <strong>{{add.prix | number_format(0, '',' ')}} €</strong>
+                    </p>
+                    <a href="{{url}}" class="btn btn-info mt-3">En savoir plus</a>
+                </div>    
+                    {% if (app.user and app.user == add.IdUser) or is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('adds_edit',{'id': add.id})}}" class="btn btn-danger">Modification de l'annonce</a>
+                    {% endif %}
+                
+            </div>
+        </div>

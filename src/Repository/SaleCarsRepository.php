@@ -22,19 +22,19 @@ class SaleCarsRepository extends ServiceEntityRepository
     // /**
     //  * @return SaleCars[] Returns an array of SaleCars objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findBySeller($part)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
+            ->join('s.id_user','u')
+            ->andWhere('u.seller = :val')
+            ->setParameter('val', $part)
             ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?SaleCars

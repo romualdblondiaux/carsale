@@ -20,7 +20,7 @@
     min-height: 100%;
 }
 
-.prosaleimg, .partsaleimg{
+.prosaleimg, .partsaleimg, .addimg{
     height: 200px;
     width: 100%;
     display: block;
@@ -45,6 +45,10 @@
 
 .carousel-caption, .carousel-control-next, .carousel-control-prev{
     text-shadow: 3px 3px 1px rgb(0,0,0,0.5);
+}
+
+.avatarmenu{
+    height: 25px;
 }
 
 

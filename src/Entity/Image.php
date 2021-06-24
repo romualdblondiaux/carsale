@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ImageRepository;
+use App\Entity\SaleCars;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ImageRepository;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
@@ -70,6 +71,18 @@ class Image
     public function setInfo(string $info): self
     {
         $this->info = $info;
+
+        return $this;
+    }
+
+    public function getAdd(): ?SaleCars
+    {
+        return $this->add;
+    }
+
+    public function setAdd(?SaleCars $add): self
+    {
+        $this->add = $add;
 
         return $this;
     }

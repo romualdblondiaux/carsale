@@ -14,7 +14,7 @@ class PartsaleController extends AbstractController
      */
     public function index(SaleCarsRepository $repo): Response
     {
-        $partsales = $repo->findAll();
+        $partsales = $repo->findBySeller('Particular');
 
         return $this->render('vente/partsale/index.html.twig', [
             'partsales' => $partsales,

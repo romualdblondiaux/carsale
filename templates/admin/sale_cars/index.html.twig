@@ -1,0 +1,58 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration des annonces{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="my-5">Gestion des annonces</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Marque</th>
+                    <th>Modele</th>
+                    <th>Km</th>
+                    <th>Prix</th>
+                    <th>Nb proprio</th>
+                    <th>Cylindrée</th>
+                    <th>Puissance</th>
+                    <th>Carburant</th>
+                    <th>Année</th>
+                    <th>Transmission</th>
+                    <th>Desc</th>
+                    <th>Opt</th>
+
+                    <th>Users</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ad in pagination.data %}
+                    <tr>
+                        <td>{{ad.id}}</td>
+                        <td>{{ad.marque}}</td>
+                        <td>{{ad.modele}}</td>
+                        <td>{{ad.km}}</td>
+                        <td>{{ad.prix}}</td>
+                        <td>{{ad.proprietaire}}</td>
+                        <td>{{ad.cylindree}}</td>
+                        <td>{{ad.puissance}}</td>
+                        <td>{{ad.carburant}}</td>
+                        <td>{{ad.annee}}</td>
+                        <td>{{ad.transmission}}</td>
+                        <td>{{ad.description}}</td>
+                        <td>{{ad.opt}}</td>
+
+                        <td>{{ad.IdUser.fullName}}</td>
+                        <td class="text-center">
+                            <a href="{{path('admin_sale_cars_edit', {'id':ad.id})}}" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                            <a href="{{path('admin_sale_cars_delete',{'id':ad.id})}}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {{ pagination.display() }}
+    </div>
+{% endblock %}
+

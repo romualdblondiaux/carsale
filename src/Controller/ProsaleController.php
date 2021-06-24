@@ -14,7 +14,7 @@ class ProsaleController extends AbstractController
      */
     public function index(SaleCarsRepository $repo): Response
     {
-        $prosales = $repo->findAll();
+        $prosales = $repo->findBySeller('Proffesional');
 
         return $this->render('vente/prosale/index.html.twig', [
             'prosales' => $prosales,

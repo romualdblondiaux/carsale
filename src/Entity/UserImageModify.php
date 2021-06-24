@@ -8,7 +8,7 @@ class UserImageModify{
 
     /**
      * @Assert\NotBlank(message="Veuillez ajouter une image")
-     * @Assert\Image(mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/gif"}, mimeTypesMessage="Vous devez upload un fichier jpg, png ou gif")
+     * @Assert\Image(mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/gif"}, mimeTypesMessage="Vous devez upload un fichier jpg, png ou gif", maxWidth = 500,)
      * @Assert\File(maxSize="1024k", maxSizeMessage="Taille du fichier trop grande")
      *
      */
